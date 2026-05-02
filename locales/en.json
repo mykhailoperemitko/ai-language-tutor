@@ -1,0 +1,124 @@
+{
+  "funnel": {
+    "age": {
+      "heading": "How old are you?",
+      "subheading": "We'll find the best tutor and topics for your age group.",
+      "options": {
+        "under_18": "Under 18",
+        "18_24": "18–24",
+        "25_34": "25–34",
+        "35_44": "35–44",
+        "45_54": "45–54",
+        "55_plus": "55+"
+      }
+    },
+    "nativeLanguage": {
+      "heading": "What language do you speak at home?",
+      "subheading": "We use this to explain things in a way that makes sense for you.",
+      "options": {
+        "ukrainian": "🇺🇦 Ukrainian",
+        "spanish": "🇪🇸 Spanish",
+        "portuguese": "🇵🇹 Portuguese",
+        "polish": "🇵🇱 Polish",
+        "mandarin": "🇨🇳 Mandarin",
+        "hindi": "🇮🇳 Hindi",
+        "vietnamese": "🇻🇳 Vietnamese",
+        "other": "Other"
+      }
+    },
+    "tutors_reveal": {
+      "heading": "50+ tutors. One for every level and every goal.",
+      "body": "Some tutors are great for beginners — they speak slowly, use simple words, and never make you feel bad for mistakes. Others push advanced learners to sound sharp and natural fast. You always pick who you talk to.",
+      "ctaLabel": "Continue",
+      "tutors": {
+        "breezy": {
+          "name": "Breezy",
+          "description": "Your chill coffee-shop buddy. Speaks slowly, keeps it simple, and celebrates every small win. Perfect if English still feels scary.",
+          "badge": "Beginner-friendly"
+        },
+        "knox": {
+          "name": "Knox",
+          "description": "Ex-Wall Street, zero tolerance for vague. Drills you on presentations, emails, and meetings until you sound like you belong in the room.",
+          "badge": "Intermediate+"
+        },
+        "wren": {
+          "name": "Wren",
+          "description": "Part travel guide, part slang encyclopedia. Teaches you the English people actually speak — not the textbook version.",
+          "badge": "All levels"
+        },
+        "vesper": {
+          "name": "Vesper",
+          "description": "Razor-sharp interview coach. Finds the gaps in your English that hold you back at work and fixes them, fast.",
+          "badge": "Advanced"
+        }
+      }
+    },
+    "level": {
+      "heading": "How comfortable are you speaking English right now?",
+      "subheading": "Be honest — your tutor will meet you exactly where you are.",
+      "options": {
+        "beginner": "Beginner — I know very little",
+        "elementary": "Elementary — basic words & phrases",
+        "intermediate": "Intermediate — I get by, but struggle",
+        "upper_intermediate": "Upper-intermediate — mostly fluent, some gaps",
+        "advanced": "Advanced — I want to polish & perfect"
+      }
+    },
+    "topics": {
+      "heading": "Where do you struggle the most right now?",
+      "subheading": "You'll improve in all of these — but tell us where to start first.",
+      "options": {
+        "job_interviews": "Job interviews",
+        "small_talk": "Small talk",
+        "work_meetings": "Work meetings",
+        "shopping_errands": "Shopping & errands",
+        "dating_friendships": "Dating & friendships",
+        "healthcare_emergencies": "Healthcare & emergencies",
+        "travel_tourism": "Travel & tourism",
+        "phone_video_calls": "Phone & video calls",
+        "news_current_events": "News & current events",
+        "academics": "Academics"
+      }
+    },
+    "dailyMinutes": {
+      "heading": "How much time can you practice each day?",
+      "subheading": "Even 10 minutes a day adds up fast. We'll build your plan around it."
+    },
+    "personalization_reveal": {
+      "heading": "Your personal plan is already taking shape.",
+      "body": "We're building a step-by-step plan around exactly that.",
+      "bodyTemplate": "You're at an {level} level, you want to get better at {topics}, and you have {dailyMinutes} minutes a day.",
+      "ctaLabel": "Continue",
+      "bulletsHeading": "Your plan gets smarter every day",
+      "bullets": [
+        "Tracks words you find hard",
+        "Remembers what topics you like",
+        "Adjusts to how fast you learn",
+        "Shows you how much you've improved"
+      ]
+    },
+    "motivation": {
+      "heading": "How motivated are you, honestly?",
+      "labelMin": "I dunno yet",
+      "labelMax": "Let's gooo"
+    },
+    "fluencyTimeline": {
+      "heading": "When do you want to be fluent in English?",
+      "subheading": "We'll make a real plan to get you there.",
+      "options": {
+        "1_month": "In 1 month",
+        "3_months": "In 3 months",
+        "6_months": "In 6 months",
+        "1_year": "In a year",
+        "no_rush": "No rush"
+      }
+    },
+    "email": {
+      "heading": "Your {fluencyTimeline} plan to speak English fluently is ready.",
+      "subheading": "Enter your email and we'll send it to you right now. Free.",
+      "placeholder": "your@email.com",
+      "ctaLabel": "Send my plan →",
+      "legalNote": "We won't send spam. You can unsubscribe any time."
+    }
+  }
+}
