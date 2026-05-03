@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+import { appConfig } from "@/lib/config";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -14,8 +15,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "AI Language Tutor",
-  description: "Your personal English tutor",
+  title: appConfig.title,
+  description: appConfig.description,
 };
 
 export default function RootLayout({

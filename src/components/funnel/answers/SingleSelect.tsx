@@ -73,7 +73,7 @@ export default function SingleSelect({
                   width: 22,
                   height: 22,
                   borderRadius: 999,
-                  border: "2px solid var(--color-ink)",
+                  border: isSel ? "none" : "2px solid var(--color-ink)",
                   background: isSel ? "var(--color-coral)" : "transparent",
                   display: "flex",
                   alignItems: "center",
