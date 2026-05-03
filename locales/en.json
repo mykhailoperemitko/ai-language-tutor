@@ -168,10 +168,10 @@
       "ctaLabel": "Continue",
       "bulletsHeading": "Your plan gets smarter every day",
       "bullets": [
-        "Tracks words you find hard",
-        "Remembers what topics you like",
-        "Adjusts to how fast you learn",
-        "Shows you how much you've improved"
+        "Hunts down every word that trips you up",
+        "Keeps serving topics you actually care about",
+        "Pushes harder when you're ready, eases up when you're not",
+        "Turns your progress into something you can see"
       ]
     },
     "motivation": {
@@ -213,13 +213,21 @@
       }
     },
     "email": {
-      "heading": "Your {{fluencyTimeline}} plan to speak English fluently is ready.",
+      "heading": "Your <h>{{highlight}}</h> English plan is ready.",
       "subheading": "Enter your email and we'll send it to you right now. Free.",
       "placeholder": "your@email.com",
       "ctaLabel": "Send my plan →",
       "legalNote": "We won't send spam. You can unsubscribe any time.",
       "label": "Your email",
-      "submittingLabel": "Sending…"
+      "submittingLabel": "Sending…",
+      "headingHighlights": {
+        "1_month": "1-month",
+        "3_months": "3-month",
+        "6_months": "6-month",
+        "1_year": "1-year",
+        "no_rush": "no-rush",
+        "default": "personalized"
+      }
     },
     "successScreen": {
       "heading": "Check your inbox",

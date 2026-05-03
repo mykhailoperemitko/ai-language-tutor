@@ -67,6 +67,8 @@ export type Question = {
   heading: string;
   subheading?: string;
   answer: Answer;
+  answerHighlights?: AnswerHighlight[];
+  headingHighlight?: string;
 };
 
 export type TutorsReveal = {
@@ -78,6 +80,12 @@ export type TutorsReveal = {
   tutors: TutorCard[];
 };
 
+export type AnswerHighlight = {
+  emoji: string;
+  label: string;
+  value: string;
+};
+
 export type PersonalizationReveal = {
   type: "personalization_reveal";
   key: "personalization_reveal";
@@ -87,6 +95,7 @@ export type PersonalizationReveal = {
   ctaLabel: string;
   bulletsHeading: string;
   bullets: string[];
+  highlights: AnswerHighlight[];
 };
 
 export type FunnelStep = Question | TutorsReveal | PersonalizationReveal;

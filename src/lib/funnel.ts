@@ -41,9 +41,9 @@ export function getFunnelSteps(
           .join(", ")
       : t("common.defaultTopics");
 
-  const fluencyTimelineLabel = answers.fluencyTimeline
-    ? t(`fluencyTimeline.options.${answers.fluencyTimeline}.title`)
-    : t("common.defaultTimeline");
+  const emailHighlight = answers.fluencyTimeline
+    ? t(`email.headingHighlights.${answers.fluencyTimeline}`, t("email.headingHighlights.default"))
+    : t("email.headingHighlights.default");
 
   const personalizationBullets = t("personalization_reveal.bullets", {
     returnObjects: true,
@@ -107,11 +107,20 @@ export function getFunnelSteps(
         options: [
           { key: "spanish", title: t("nativeLanguage.options.spanish.title") },
           { key: "hindi", title: t("nativeLanguage.options.hindi.title") },
-          { key: "mandarin", title: t("nativeLanguage.options.mandarin.title") },
+          {
+            key: "mandarin",
+            title: t("nativeLanguage.options.mandarin.title"),
+          },
           { key: "tagalog", title: t("nativeLanguage.options.tagalog.title") },
-          { key: "vietnamese", title: t("nativeLanguage.options.vietnamese.title") },
+          {
+            key: "vietnamese",
+            title: t("nativeLanguage.options.vietnamese.title"),
+          },
           { key: "korean", title: t("nativeLanguage.options.korean.title") },
-          { key: "portuguese", title: t("nativeLanguage.options.portuguese.title") },
+          {
+            key: "portuguese",
+            title: t("nativeLanguage.options.portuguese.title"),
+          },
           { key: "other", title: t("nativeLanguage.options.other.title") },
         ],
       },
@@ -281,6 +290,11 @@ export function getFunnelSteps(
       ctaLabel: t("personalization_reveal.ctaLabel"),
       bulletsHeading: t("personalization_reveal.bulletsHeading"),
       bullets: personalizationBullets,
+      highlights: [
+        { emoji: "🎯", label: "Level", value: levelLabel },
+        { emoji: "💬", label: "Topics", value: topicsLabel },
+        { emoji: "⏱️", label: "Daily", value: `${dailyMinutes} min` },
+      ],
     },
     {
       type: "question",
@@ -340,10 +354,9 @@ export function getFunnelSteps(
     {
       type: "question",
       key: "email",
-      heading: t("email.heading", {
-        fluencyTimeline: fluencyTimelineLabel,
-      }),
+      heading: "",
       subheading: t("email.subheading"),
+      headingHighlight: emailHighlight,
       answer: {
         type: "email_input",
         label: t("email.label"),
@@ -355,8 +368,6 @@ export function getFunnelSteps(
     },
   ];
 }
-
-
 
 export function buildSubmission(
   answers: FunnelAnswers,

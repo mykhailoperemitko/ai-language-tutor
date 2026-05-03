@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans, useTranslation } from "react-i18next";
 import SingleSelect from "../answers/SingleSelect";
 import MultiSelect from "../answers/MultiSelect";
 import RangeSlider from "../answers/RangeSlider";
@@ -17,6 +18,12 @@ type Props = {
   ) => Promise<{ ok: true } | { ok: false; error: string }>;
 };
 
+const headingStyle: React.CSSProperties = {
+  fontSize: 28,
+  margin: "4px 0 6px",
+  lineHeight: 1.05,
+};
+
 export default function QuestionStep({
   step,
   answers,
@@ -24,16 +31,24 @@ export default function QuestionStep({
   onNext,
   onSubmitFunnel,
 }: Props) {
+  const { t } = useTranslation("funnel");
+
   return (
     <div>
-      {step.heading && (
-        <h2
-          className="display"
-          style={{ fontSize: 28, margin: "4px 0 6px", lineHeight: 1.05 }}
-        >
+      {step.headingHighlight ? (
+        <h2 className="display" style={headingStyle}>
+          <Trans
+            t={t}
+            i18nKey={`${step.key}.heading`}
+            values={{ highlight: step.headingHighlight }}
+            components={{ h: <span style={{ color: "var(--color-coral)" }} /> }}
+          />
+        </h2>
+      ) : step.heading ? (
+        <h2 className="display" style={headingStyle}>
           {step.heading}
         </h2>
-      )}
+      ) : null}
       {step.subheading && (
         <p
           style={{
