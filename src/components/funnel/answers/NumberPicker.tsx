@@ -32,11 +32,21 @@ export default function NumberPicker({
   onNext,
 }: Props) {
   const current = value ?? Math.ceil((answer.min + answer.max) / 2);
+
   const numbers = Array.from(
     { length: answer.max - answer.min + 1 },
     (_, i) => answer.min + i,
   );
-  const thresholds = [3, 6, 8, Infinity];
+
+  const rangeSize = answer.max - answer.min + 1;
+
+  const thresholds = [
+    answer.min + Math.max(0, Math.ceil(rangeSize * 0.4) - 1),
+    answer.min + Math.max(0, Math.ceil(rangeSize * 0.6) - 1),
+    answer.min + Math.max(0, Math.ceil(rangeSize * 0.8) - 1),
+    Infinity,
+  ] as const;
+
   const topColorThreshold = thresholds[1];
 
   useEffect(() => {

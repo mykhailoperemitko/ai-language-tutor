@@ -17,13 +17,13 @@ export function getFunnelSteps(
 
   const dailyMinutesTag = dailyMinutesTagLines[dailyMinutesTagIndex] ?? "";
 
-  const motivation = answers.motivation ?? 6;
+  const motivation = answers.motivation ?? 3;
 
   const motivationTagLines = t("motivation.tagLines", {
     returnObjects: true,
   }) as string[];
 
-  const motivationTagIndex = [3, 6, 8, Infinity].findIndex(
+  const motivationTagIndex = [2, 3, 4, Infinity].findIndex(
     (max) => motivation <= max,
   );
 
@@ -303,7 +303,7 @@ export function getFunnelSteps(
       answer: {
         type: "number_picker",
         min: 1,
-        max: 10,
+        max: 5,
         labelMin: t("motivation.labelMin"),
         labelMax: t("motivation.labelMax"),
         continueLabel: t("motivation.continueLabel"),
