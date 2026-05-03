@@ -58,9 +58,6 @@ export type PersonalizationReveal = {
 
 export type FunnelStep = Question | TutorsReveal | PersonalizationReveal;
 
-// ─── Funnel answer types ──────────────────────────────────────────────
-// For select questions the stored value is the option key, not the display label.
-
 export type QuestionKey =
   | "age"
   | "nativeLanguage"

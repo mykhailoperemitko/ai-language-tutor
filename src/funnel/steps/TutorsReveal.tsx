@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import type { TutorsReveal as TutorsRevealType } from "../types";
-import { tutorBadgeColors } from "../theme";
+import { tutorBadgeColors } from "../utils/theme";
+import type { TutorsReveal as TutorsRevealType } from "../utils/types";
 
 type Props = {
   step: TutorsRevealType;

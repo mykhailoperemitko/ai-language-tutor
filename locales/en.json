@@ -4,26 +4,60 @@
       "heading": "How old are you?",
       "subheading": "We'll find the best tutor and topics for your age group.",
       "options": {
-        "under_18": "Under 18",
-        "18_24": "18–24",
-        "25_34": "25–34",
-        "35_44": "35–44",
-        "45_54": "45–54",
-        "55_plus": "55+"
+        "under_18": {
+          "title": "Under 18",
+          "subtitle": "Still early. Your future fluent self is already winning."
+        },
+        "18_24": {
+          "title": "18–24",
+          "subtitle": "Big goals, messy schedules, main-character energy."
+        },
+        "25_34": {
+          "title": "25–34",
+          "subtitle": "Career moves, life moves, and English that keeps up."
+        },
+        "35_44": {
+          "title": "35–44",
+          "subtitle": "Busy life, sharp priorities, zero time for fluff."
+        },
+        "45_54": {
+          "title": "45–54",
+          "subtitle": "Clear goals, real focus, and plenty left to level up."
+        },
+        "55_plus": {
+          "title": "55+",
+          "subtitle": "Proof that it is never too late to sound amazing."
+        }
       }
     },
     "nativeLanguage": {
       "heading": "What language do you speak at home?",
       "subheading": "We use this to explain things in a way that makes sense for you.",
       "options": {
-        "ukrainian": "🇺🇦 Ukrainian",
-        "spanish": "🇪🇸 Spanish",
-        "portuguese": "🇵🇹 Portuguese",
-        "polish": "🇵🇱 Polish",
-        "mandarin": "🇨🇳 Mandarin",
-        "hindi": "🇮🇳 Hindi",
-        "vietnamese": "🇻🇳 Vietnamese",
-        "other": "Other"
+        "ukrainian": {
+          "title": "🇺🇦 Ukrainian"
+        },
+        "spanish": {
+          "title": "🇪🇸 Spanish"
+        },
+        "portuguese": {
+          "title": "🇵🇹 Portuguese"
+        },
+        "polish": {
+          "title": "🇵🇱 Polish"
+        },
+        "mandarin": {
+          "title": "🇨🇳 Mandarin"
+        },
+        "hindi": {
+          "title": "🇮🇳 Hindi"
+        },
+        "vietnamese": {
+          "title": "🇻🇳 Vietnamese"
+        },
+        "other": {
+          "title": "Other"
+        }
       }
     },
     "tutors_reveal": {
@@ -57,27 +91,62 @@
       "heading": "How comfortable are you speaking English right now?",
       "subheading": "Be honest — your tutor will meet you exactly where you are.",
       "options": {
-        "beginner": "Beginner — I know very little",
-        "elementary": "Elementary — basic words & phrases",
-        "intermediate": "Intermediate — I get by, but struggle",
-        "upper_intermediate": "Upper-intermediate — mostly fluent, some gaps",
-        "advanced": "Advanced — I want to polish & perfect"
+        "beginner": {
+          "title": "Beginner",
+          "subtitle": "I know very little, but I am ready to start."
+        },
+        "elementary": {
+          "title": "Elementary",
+          "subtitle": "I know basic words and phrases, then vibes take over."
+        },
+        "intermediate": {
+          "title": "Intermediate",
+          "subtitle": "I can get by, but speaking still feels a bit wobbly."
+        },
+        "upper_intermediate": {
+          "title": "Upper-intermediate",
+          "subtitle": "I am mostly fluent, with a few stubborn gaps left."
+        },
+        "advanced": {
+          "title": "Advanced",
+          "subtitle": "I want to polish the details and sound seriously sharp."
+        }
       }
     },
     "topics": {
       "heading": "Where do you struggle the most right now?",
       "subheading": "You'll improve in all of these — but tell us where to start first.",
       "options": {
-        "job_interviews": "Job interviews",
-        "small_talk": "Small talk",
-        "work_meetings": "Work meetings",
-        "shopping_errands": "Shopping & errands",
-        "dating_friendships": "Dating & friendships",
-        "healthcare_emergencies": "Healthcare & emergencies",
-        "travel_tourism": "Travel & tourism",
-        "phone_video_calls": "Phone & video calls",
-        "news_current_events": "News & current events",
-        "academics": "Academics"
+        "job_interviews": {
+          "title": "Job interviews"
+        },
+        "small_talk": {
+          "title": "Small talk"
+        },
+        "work_meetings": {
+          "title": "Work meetings"
+        },
+        "shopping_errands": {
+          "title": "Shopping & errands"
+        },
+        "dating_friendships": {
+          "title": "Dating & friendships"
+        },
+        "healthcare_emergencies": {
+          "title": "Healthcare & emergencies"
+        },
+        "travel_tourism": {
+          "title": "Travel & tourism"
+        },
+        "phone_video_calls": {
+          "title": "Phone & video calls"
+        },
+        "news_current_events": {
+          "title": "News & current events"
+        },
+        "academics": {
+          "title": "Academics"
+        }
       }
     },
     "dailyMinutes": {
@@ -121,11 +190,26 @@
       "heading": "When do you want to be fluent in English?",
       "subheading": "We'll make a real plan to get you there.",
       "options": {
-        "1_month": "In 1 month",
-        "3_months": "In 3 months",
-        "6_months": "In 6 months",
-        "1_year": "In a year",
-        "no_rush": "No rush"
+        "1_month": {
+          "title": "In 1 month",
+          "subtitle": "Bold. Chaotic. We respect the ambition."
+        },
+        "3_months": {
+          "title": "In 3 months",
+          "subtitle": "Fast, focused, and very doable with consistency."
+        },
+        "6_months": {
+          "title": "In 6 months",
+          "subtitle": "A solid runway for real progress without panic mode."
+        },
+        "1_year": {
+          "title": "In a year",
+          "subtitle": "Steady pace, strong habits, lasting fluency."
+        },
+        "no_rush": {
+          "title": "No rush",
+          "subtitle": "Slow and steady still gets you sounding good."
+        }
       }
     },
     "email": {

@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import type { MultiSelect as MultiSelectType } from "../types";
-import { funnelColors } from "../theme";
+import { getOptionCopy } from "../utils/content";
+import type { MultiSelect as MultiSelectType } from "../utils/types";
 
 type Props = {
   questionId: string;
@@ -44,14 +44,17 @@ export default function MultiSelect({
       >
         {answer.options.map((option) => {
           const isSel = value.includes(option.key);
+          const copy = getOptionCopy(t, questionId, option.key);
           return (
             <button
               key={option.key}
               onClick={() => toggle(option.key)}
               style={{
-                background: isSel ? funnelColors.coral : funnelColors.paper,
-                color: isSel ? funnelColors.textOnAccent : funnelColors.ink,
-                border: `2px solid ${funnelColors.ink}`,
+                background: isSel ? "var(--color-coral)" : "var(--color-paper)",
+                color: isSel
+                  ? "var(--color-text-on-accent)"
+                  : "var(--color-ink)",
+                border: "2px solid var(--color-ink)",
                 borderRadius: 999,
                 padding: "10px 14px",
                 fontSize: 14,
@@ -59,13 +62,13 @@ export default function MultiSelect({
                 fontFamily: "inherit",
                 cursor: "pointer",
                 boxShadow: isSel
-                  ? `0 3px 0 ${funnelColors.ink}`
-                  : `0 2px 0 ${funnelColors.ink}`,
+                  ? "0 3px 0 var(--color-ink)"
+                  : "0 2px 0 var(--color-ink)",
                 transition: "transform 100ms, background 150ms",
                 transform: isSel ? "translateY(-1px)" : "none",
               }}
             >
-              {t(`${questionId}.options.${option.key}`)}
+              {copy.title}
             </button>
           );
         })}

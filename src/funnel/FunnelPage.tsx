@@ -2,13 +2,13 @@
 
 import "@/utils/i18n";
 import { useReducer } from "react";
-import { FUNNEL_STEPS } from "./steps";
-import type { FunnelAnswers } from "./types";
 import FunnelHeader from "./FunnelHeader";
 import QuestionStep from "./steps/QuestionStep";
 import TutorsReveal from "./steps/TutorsReveal";
 import PersonalizationReveal from "./steps/PersonalizationReveal";
 import SuccessScreen from "./steps/SuccessScreen";
+import { FUNNEL_STEPS } from "./utils/constants";
+import type { FunnelAnswers } from "./utils/types";
 
 type State = {
   stepIndex: number;

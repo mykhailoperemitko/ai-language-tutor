@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import type { NumberPicker as NumberPickerType } from "../types";
-import { funnelColors, numberPickerButtonColors } from "../theme";
-import { resolveTag } from "../utils";
+import { resolveTag } from "../utils/content";
+import { numberPickerButtonColors } from "../utils/theme";
+import type { NumberPicker as NumberPickerType } from "../utils/types";
 
 type Props = {
   questionId: string;
@@ -24,7 +24,7 @@ function getButtonBg(
   return (
     numberPickerButtonColors[
       Math.min(tier, numberPickerButtonColors.length - 1)
-    ] ?? funnelColors.coral
+    ] ?? "var(--color-coral)"
   );
 }
 
@@ -96,17 +96,17 @@ export default function NumberPicker({
                 background: getButtonBg(n, current, thresholds),
                 color:
                   filled && n > topColorThreshold
-                    ? funnelColors.textOnAccent
-                    : funnelColors.ink,
-                border: `2px solid ${funnelColors.ink}`,
+                    ? "var(--color-text-on-accent)"
+                    : "var(--color-ink)",
+                border: "2px solid var(--color-ink)",
                 borderRadius: 10,
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
                 fontSize: 16,
                 cursor: "pointer",
                 boxShadow: isSel
-                  ? `0 3px 0 ${funnelColors.ink}`
-                  : `0 1px 0 ${funnelColors.ink}`,
+                  ? "0 3px 0 var(--color-ink)"
+                  : "0 1px 0 var(--color-ink)",
                 transform: isSel ? "translateY(-2px)" : "none",
                 transition: "transform 100ms, background 150ms",
               }}

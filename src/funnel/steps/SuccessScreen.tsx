@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { funnelColors, successConfettiColors } from "../theme";
+import { successConfettiColors } from "../utils/theme";
 
 export default function SuccessScreen({ email }: { email: string }) {
   const { t } = useTranslation("funnel");
@@ -39,7 +39,7 @@ export default function SuccessScreen({ email }: { email: string }) {
               height: 12,
               background:
                 successConfettiColors[i % successConfettiColors.length],
-              border: `1.5px solid ${funnelColors.ink}`,
+              border: "1.5px solid var(--color-ink)",
               borderRadius: 2,
               animation: `confetti-fall ${2.4 + (i % 5) * 0.3}s ease-in ${i * 0.07}s forwards`,
             }}
@@ -81,21 +81,21 @@ export default function SuccessScreen({ email }: { email: string }) {
             display: "inline-flex",
             alignItems: "center",
             gap: 8,
-            background: funnelColors.mint,
-            color: funnelColors.textOnAccent,
-            border: `2px solid ${funnelColors.ink}`,
+            background: "var(--color-mint)",
+            color: "var(--color-text-on-accent)",
+            border: "2px solid var(--color-ink)",
             borderRadius: 999,
             padding: "8px 18px",
             fontSize: 14,
             fontWeight: 700,
-            boxShadow: `0 2px 0 ${funnelColors.ink}`,
+            boxShadow: "0 2px 0 var(--color-ink)",
           }}
         >
           <svg
             width="14"
             height="14"
             viewBox="0 0 14 14"
-            style={{ color: funnelColors.textOnAccent }}
+            style={{ color: "var(--color-text-on-accent)" }}
           >
             <path
               d="M2 7 L6 11 L12 3"

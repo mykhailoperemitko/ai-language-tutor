@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { funnelColors } from "../theme";
 
 type Props = {
   questionId: string;
@@ -54,14 +53,14 @@ export default function EmailInput({
       </label>
       <div
         style={{
-          border: `2px solid ${funnelColors.ink}`,
+          border: "2px solid var(--color-ink)",
           borderRadius: 14,
-          background: funnelColors.white,
+          background: "var(--color-white)",
           padding: "12px 14px",
           display: "flex",
           alignItems: "center",
           gap: 10,
-          boxShadow: `0 3px 0 ${funnelColors.ink}`,
+          boxShadow: "0 3px 0 var(--color-ink)",
         }}
       >
         <span style={{ fontSize: 18 }}>✉️</span>

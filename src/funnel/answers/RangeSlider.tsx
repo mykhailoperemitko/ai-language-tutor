@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import type { RangeSlider as RangeSliderType } from "../types";
-import { resolveTag } from "../utils";
+import { resolveTag } from "../utils/content";
+import type { RangeSlider as RangeSliderType } from "../utils/types";
 
 type Props = {
   questionId: string;

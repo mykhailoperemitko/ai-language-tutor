@@ -2,12 +2,13 @@
 
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
-import type { Question, FunnelAnswers } from "../types";
 import SingleSelect from "../answers/SingleSelect";
 import MultiSelect from "../answers/MultiSelect";
 import RangeSlider from "../answers/RangeSlider";
 import NumberPicker from "../answers/NumberPicker";
 import EmailInput from "../answers/EmailInput";
+import { getOptionCopy } from "../utils/content";
+import type { Question, FunnelAnswers } from "../utils/types";
 
 type Props = {
   step: Question;
@@ -26,7 +27,7 @@ function interpolate(
   return raw.replace(/\{(\w+)\}/g, (_, key) => {
     const val = answers[key as keyof FunnelAnswers];
     if (val === undefined || val === null) return "";
-    if (typeof val === "string") return t(`${key}.options.${val}`, val);
+    if (typeof val === "string") return getOptionCopy(t, key, val).title;
     return String(val);
   });
 }

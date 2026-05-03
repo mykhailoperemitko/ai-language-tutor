@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import type { FunnelAnswers } from "../types";
-import { funnelColors } from "../theme";
+import { getOptionCopy } from "../utils/content";
+import type { FunnelAnswers } from "../utils/types";
 
 type Props = {
   answers: FunnelAnswers;
@@ -13,13 +13,13 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
   const { t } = useTranslation("funnel");
 
   const levelLabel = answers.level
-    ? t(`level.options.${answers.level}`, answers.level)
+    ? getOptionCopy(t, "level", answers.level).title
     : t("common.defaultLevel");
   const topicsLabel =
     answers.topics && answers.topics.length > 0
       ? answers.topics
           .slice(0, 3)
-          .map((k) => t(`topics.options.${k}`, k))
+          .map((k) => getOptionCopy(t, "topics", k).title)
           .join(", ")
       : t("common.defaultTopics");
   const dailyMinutes = answers.dailyMinutes ?? 15;
@@ -43,16 +43,16 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
         <span
           className="chip"
           style={{
-            background: funnelColors.mint,
-            color: funnelColors.textOnAccent,
-            borderColor: funnelColors.ink,
+            background: "var(--color-mint)",
+            color: "var(--color-text-on-accent)",
+            borderColor: "var(--color-ink)",
           }}
         >
           <svg
             width="12"
             height="12"
             viewBox="0 0 12 12"
-            style={{ color: funnelColors.textOnAccent }}
+            style={{ color: "var(--color-text-on-accent)" }}
           >
             <path
               d="M2 6 L5 9 L10 3"
@@ -121,8 +121,8 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
                   width: 24,
                   height: 24,
                   borderRadius: 999,
-                  background: funnelColors.mint,
-                  border: `2px solid ${funnelColors.ink}`,
+                  background: "var(--color-mint)",
+                  border: "2px solid var(--color-ink)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
@@ -133,7 +133,7 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
                   width="10"
                   height="10"
                   viewBox="0 0 10 10"
-                  style={{ color: funnelColors.textOnAccent }}
+                  style={{ color: "var(--color-text-on-accent)" }}
                 >
                   <path
                     d="M2 5 L4 7 L8 3"
