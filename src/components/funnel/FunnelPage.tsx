@@ -1,21 +1,19 @@
 "use client";
 
-import { submitFunnel as submitFunnelAction } from "@/app/actions/submitFunnel";
 import "@/lib/i18n";
+import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useFunnelFlow } from "@/hooks/useFunnelFlow";
-import { buildSubmission } from "@/lib/funnel";
-import type { SubmitResult } from "@/lib/types";
+import { getFunnelSteps } from "@/lib/funnel";
 import FunnelHeader from "./FunnelHeader";
 import QuestionStep from "./steps/QuestionStep";
 import TutorsReveal from "./steps/TutorsReveal";
 import PersonalizationReveal from "./steps/PersonalizationReveal";
 import SuccessScreen from "./steps/SuccessScreen";
 
-const VALIDATION_ERROR = "Please complete the full quiz and try again.";
-
 export default function FunnelPage() {
   const { t } = useTranslation("funnel");
+
   const {
     answers,
     completed,
@@ -25,21 +23,8 @@ export default function FunnelPage() {
     goNext,
     goBack,
     setAnswer,
-  } = useFunnelFlow(t);
-
-  const submitFunnel = async (email: string): Promise<SubmitResult> => {
-    const payload = buildSubmission(answers, email);
-    if (!payload) {
-      return { ok: false, error: VALIDATION_ERROR };
-    }
-
-    const result = await submitFunnelAction(payload);
-    if (!result.ok) return result;
-
-    setAnswer("email", email);
-    goNext();
-    return { ok: true };
-  };
+    submitFunnel,
+  } = useFunnelFlow(useCallback((answers) => getFunnelSteps(t, answers), [t]));
 
   if (completed) {
     return <SuccessScreen email={answers.email ?? ""} />;
