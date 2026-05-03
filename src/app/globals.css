@@ -171,6 +171,28 @@ body {
   white-space: nowrap;
 }
 
+.tutor-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.tutor-description {
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+@media (min-width: 520px) {
+  .tutor-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .tutor-description {
+    font-size: 12.5px;
+  }
+}
+
 @keyframes pop-in {
   0% {
     opacity: 0;

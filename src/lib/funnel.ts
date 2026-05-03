@@ -134,28 +134,28 @@ export function getFunnelSteps(
       tutors: [
         {
           key: "breezy",
-          emoji: "☕",
+          imageSrc: "/tutors/breezy.png",
           name: t("tutors_reveal.tutors.breezy.name"),
           description: t("tutors_reveal.tutors.breezy.description"),
           badge: t("tutors_reveal.tutors.breezy.badge"),
         },
         {
           key: "knox",
-          emoji: "💼",
+          imageSrc: "/tutors/knox.png",
           name: t("tutors_reveal.tutors.knox.name"),
           description: t("tutors_reveal.tutors.knox.description"),
           badge: t("tutors_reveal.tutors.knox.badge"),
         },
         {
           key: "wren",
-          emoji: "🌍",
+          imageSrc: "/tutors/wren.png",
           name: t("tutors_reveal.tutors.wren.name"),
           description: t("tutors_reveal.tutors.wren.description"),
           badge: t("tutors_reveal.tutors.wren.badge"),
         },
         {
           key: "vesper",
-          emoji: "🎯",
+          imageSrc: "/tutors/vesper.png",
           name: t("tutors_reveal.tutors.vesper.name"),
           description: t("tutors_reveal.tutors.vesper.description"),
           badge: t("tutors_reveal.tutors.vesper.badge"),

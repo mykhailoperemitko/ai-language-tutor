@@ -54,7 +54,7 @@ export type Answer =
   | NumberPicker
   | EmailInput;
 
-export type Tutor = { key: string; emoji: string };
+export type Tutor = { key: string; imageSrc: string };
 export type TutorCard = Tutor & {
   name: string;
   description: string;

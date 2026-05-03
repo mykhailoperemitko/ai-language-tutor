@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { tutorBadgeColors } from "@/lib/theme";
 import type { TutorsReveal as TutorsRevealType } from "@/lib/types";
 
@@ -28,11 +30,9 @@ export default function TutorsReveal({ step, onNext }: Props) {
       </p>
 
       <div
+        className="tutor-grid"
         style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gap: 10,
-          marginBottom: 20,
+          marginBottom: 18,
         }}
       >
         {step.tutors.map((tutor, i) => {
@@ -43,67 +43,105 @@ export default function TutorsReveal({ step, onNext }: Props) {
           return (
             <div
               key={tutor.key}
-              className="fade-pop"
+              className="fade-pop tutor-card"
               style={{
-                background: "var(--color-paper)",
                 border: "1.5px solid var(--color-ink)",
                 borderRadius: "var(--r-card)",
-                padding: "16px 14px",
                 boxShadow: "var(--shadow-soft)",
-                display: "flex",
-                flexDirection: "column",
-                gap: 10,
+                position: "relative",
+                overflow: "hidden",
+                minHeight: 220,
                 animationDelay: `${i * 60}ms`,
               }}
             >
               <div
+                aria-hidden="true"
                 style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: 14,
-                  background: "var(--color-cream-2)",
-                  border: "2px solid var(--color-ink)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 28,
+                  position: "absolute",
+                  inset: 0,
                 }}
               >
-                {tutor.emoji}
+                <Image
+                  src={tutor.imageSrc}
+                  alt={tutor.name}
+                  fill
+                  sizes="(min-width: 520px) 50vw, 100vw"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                />
               </div>
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 2 }}>
-                  {tutor.name}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background:
+                    "linear-gradient(to top, rgb(31 27 23 / 0.92) 0%, rgb(31 27 23 / 0.55) 42%, rgb(31 27 23 / 0.12) 100%)",
+                }}
+              />
+              <div
+                style={{
+                  position: "relative",
+                  zIndex: 1,
+                  minHeight: 220,
+                  padding: "16px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <div style={{ marginBottom: "auto" }}>
+                  <span
+                    className="chip"
+                    style={{
+                      background: badge.bg,
+                      color: badge.color,
+                      borderColor: "var(--color-ink)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {tutor.badge}
+                  </span>
                 </div>
                 <div
                   style={{
-                    fontSize: 13,
-                    color: "var(--color-ink-soft)",
-                    lineHeight: 1.4,
-                    marginBottom: 8,
+                    fontWeight: 700,
+                    fontSize: 16,
+                    lineHeight: 1.15,
+                    minWidth: 0,
+                    color: "var(--color-white)",
+                    marginBottom: 4,
+                  }}
+                >
+                  {tutor.name}
+                </div>
+                <div
+                  className="tutor-description"
+                  style={{
+                    color: "rgb(255 255 255 / 0.88)",
                   }}
                 >
                   {tutor.description}
                 </div>
-                <span
-                  className="chip"
-                  style={{
-                    background: badge.bg,
-                    color: badge.color,
-                    borderColor: "var(--color-ink)",
-                  }}
-                >
-                  {tutor.badge}
-                </span>
               </div>
             </div>
           );
         })}
       </div>
 
-      <button className="btn full" onClick={onNext}>
-        {step.ctaLabel}
-      </button>
+      <div
+        style={{
+          position: "sticky",
+          bottom: 0,
+          paddingTop: 8,
+          background:
+            "linear-gradient(to bottom, rgb(251 246 236 / 0), var(--color-cream) 26px)",
+        }}
+      >
+        <button className="btn full" onClick={onNext}>
+          {step.ctaLabel}
+        </button>
+      </div>
     </div>
   );
 }
