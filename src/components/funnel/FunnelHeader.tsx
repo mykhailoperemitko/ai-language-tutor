@@ -15,16 +15,21 @@ export default function FunnelHeader({
   onBack,
 }: FunnelHeaderProps) {
   const { t } = useTranslation("funnel");
+
   const progress = ((stepIndex + 1) / totalSteps) * 100;
+
   const stepLabel = t("header.stepLabel", {
     current: stepIndex + 1,
     total: totalSteps,
   });
 
+  const overscrollInset = "calc(env(safe-area-inset-top, 0px) + 24px)";
+
   return (
     <div
       style={{
-        padding: "12px 20px 10px",
+        padding: `${overscrollInset} 20px 10px`,
+        marginTop: `calc(-1 * ${overscrollInset})`,
         display: "flex",
         flexDirection: "column",
         gap: 8,
