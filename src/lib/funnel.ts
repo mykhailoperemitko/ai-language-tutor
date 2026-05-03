@@ -105,25 +105,13 @@ export function getFunnelSteps(
       answer: {
         type: "single_select",
         options: [
-          {
-            key: "ukrainian",
-            title: t("nativeLanguage.options.ukrainian.title"),
-          },
           { key: "spanish", title: t("nativeLanguage.options.spanish.title") },
-          {
-            key: "portuguese",
-            title: t("nativeLanguage.options.portuguese.title"),
-          },
-          { key: "polish", title: t("nativeLanguage.options.polish.title") },
-          {
-            key: "mandarin",
-            title: t("nativeLanguage.options.mandarin.title"),
-          },
           { key: "hindi", title: t("nativeLanguage.options.hindi.title") },
-          {
-            key: "vietnamese",
-            title: t("nativeLanguage.options.vietnamese.title"),
-          },
+          { key: "mandarin", title: t("nativeLanguage.options.mandarin.title") },
+          { key: "tagalog", title: t("nativeLanguage.options.tagalog.title") },
+          { key: "vietnamese", title: t("nativeLanguage.options.vietnamese.title") },
+          { key: "korean", title: t("nativeLanguage.options.korean.title") },
+          { key: "portuguese", title: t("nativeLanguage.options.portuguese.title") },
           { key: "other", title: t("nativeLanguage.options.other.title") },
         ],
       },

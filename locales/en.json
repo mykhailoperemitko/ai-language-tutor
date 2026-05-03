@@ -34,26 +34,26 @@
       "heading": "What language do you speak at home?",
       "subheading": "We use this to explain things in a way that makes sense for you.",
       "options": {
-        "ukrainian": {
-          "title": "🇺🇦 Ukrainian"
-        },
         "spanish": {
           "title": "🇪🇸 Spanish"
-        },
-        "portuguese": {
-          "title": "🇵🇹 Portuguese"
-        },
-        "polish": {
-          "title": "🇵🇱 Polish"
-        },
-        "mandarin": {
-          "title": "🇨🇳 Mandarin"
         },
         "hindi": {
           "title": "🇮🇳 Hindi"
         },
+        "mandarin": {
+          "title": "🇨🇳 Mandarin"
+        },
+        "tagalog": {
+          "title": "🇵🇭 Tagalog"
+        },
         "vietnamese": {
           "title": "🇻🇳 Vietnamese"
+        },
+        "korean": {
+          "title": "🇰🇷 Korean"
+        },
+        "portuguese": {
+          "title": "🇧🇷 Portuguese"
         },
         "other": {
           "title": "Other"
