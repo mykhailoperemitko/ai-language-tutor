@@ -15,12 +15,14 @@ export type RangeSlider = {
   step: number;
   defaultValue: number;
   unit: string;
+  tagThresholds?: readonly number[];
 };
 
 export type NumberPicker = {
   type: "number_picker";
   min: number;
   max: number;
+  tagThresholds?: readonly number[];
 };
 
 export type EmailInput = { type: "email_input" };
@@ -35,7 +37,7 @@ export type Answer =
 export type Tutor = { key: string; emoji: string };
 
 export type Question = {
-  type:"question";
+  type: "question";
   id: string;
   step: number;
   answer: Answer;

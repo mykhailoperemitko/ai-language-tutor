@@ -82,12 +82,20 @@
     },
     "dailyMinutes": {
       "heading": "How much time can you practice each day?",
-      "subheading": "Even 10 minutes a day adds up fast. We'll build your plan around it."
+      "subheading": "Even 10 minutes a day adds up fast. We'll build your plan around it.",
+      "unitLabel": "Minutes / day",
+      "ctaLabel": "I commit",
+      "tagLines": [
+        "Bite-sized — perfect on the bus",
+        "Goldilocks — most learners pick this",
+        "Power hour-lite — fluency in 90 days",
+        "Hardcore — you're built different"
+      ]
     },
     "personalization_reveal": {
       "heading": "Your personal plan is already taking shape.",
       "body": "We're building a step-by-step plan around exactly that.",
-      "bodyTemplate": "You're at an {level} level, you want to get better at {topics}, and you have {dailyMinutes} minutes a day.",
+      "bodyTemplate": "You're at an {{level}} level, you want to get better at {{topics}}, and you have {{dailyMinutes}} minutes a day.",
       "ctaLabel": "Continue",
       "bulletsHeading": "Your plan gets smarter every day",
       "bullets": [
@@ -100,7 +108,14 @@
     "motivation": {
       "heading": "How motivated are you, honestly?",
       "labelMin": "I dunno yet",
-      "labelMax": "Let's gooo"
+      "labelMax": "Let's gooo",
+      "continueLabel": "Continue",
+      "tagLines": [
+        "It's okay — we'll bring the spark.",
+        "Curious — solid place to start.",
+        "Locked in. We love that.",
+        "Unstoppable. Let's make it happen."
+      ]
     },
     "fluencyTimeline": {
       "heading": "When do you want to be fluent in English?",
@@ -118,7 +133,26 @@
       "subheading": "Enter your email and we'll send it to you right now. Free.",
       "placeholder": "your@email.com",
       "ctaLabel": "Send my plan →",
-      "legalNote": "We won't send spam. You can unsubscribe any time."
+      "legalNote": "We won't send spam. You can unsubscribe any time.",
+      "label": "Your email",
+      "submittingLabel": "Sending…"
+    },
+    "successScreen": {
+      "heading": "Check your inbox",
+      "body": "We just sent your fluency plan to {{email}}.",
+      "confirmLabel": "Plan sent"
+    },
+    "header": {
+      "back": "Back",
+      "stepLabel": "Step {{current}} of {{total}}"
+    },
+    "common": {
+      "continue": "Continue",
+      "countSelected": "{{count}} selected",
+      "pickAtLeast": "Pick at least {{min}}",
+      "planTakingShape": "Plan taking shape",
+      "defaultLevel": "your level",
+      "defaultTopics": "your chosen topics"
     }
   }
 }

@@ -2,7 +2,7 @@ import type { FunnelStep } from "./types";
 
 export const FUNNEL_STEPS: readonly FunnelStep[] = [
   {
-    type:"question",
+    type: "question",
     id: "age",
     step: 1,
     answer: {
@@ -18,7 +18,7 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
     },
   },
   {
-    type:"question",
+    type: "question",
     id: "nativeLanguage",
     step: 2,
     answer: {
@@ -47,7 +47,7 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
     ],
   },
   {
-    type:"question",
+    type: "question",
     id: "level",
     step: 4,
     answer: {
@@ -62,7 +62,7 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
     },
   },
   {
-    type:"question",
+    type: "question",
     id: "topics",
     step: 5,
     answer: {
@@ -83,7 +83,7 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
     },
   },
   {
-    type:"question",
+    type: "question",
     id: "dailyMinutes",
     step: 6,
     answer: {
@@ -93,6 +93,7 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
       step: 5,
       defaultValue: 15,
       unit: "min",
+      tagThresholds: [5, 15, 30, Infinity],
     },
   },
   {
@@ -101,17 +102,18 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
     step: 7,
   },
   {
-    type:"question",
+    type: "question",
     id: "motivation",
     step: 8,
     answer: {
       type: "number_picker",
       min: 1,
       max: 10,
+      tagThresholds: [3, 6, 8, Infinity],
     },
   },
   {
-    type:"question",
+    type: "question",
     id: "fluencyTimeline",
     step: 9,
     answer: {
@@ -126,7 +128,7 @@ export const FUNNEL_STEPS: readonly FunnelStep[] = [
     },
   },
   {
-    type:"question",
+    type: "question",
     id: "email",
     step: 10,
     answer: { type: "email_input" },
