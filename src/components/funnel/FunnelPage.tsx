@@ -46,7 +46,7 @@ export default function FunnelPage() {
       />
       <main
         className="no-scrollbar"
-        style={{ flex: 1, overflowY: "auto", padding: "28px 0 48px" }}
+        style={{ flex: 1, overflowY: "auto", padding: "32px 0 48px" }}
       >
         <div style={{ maxWidth: 560, margin: "0 auto", padding: "0 24px" }}>
           <div key={stepIndex} className="fade-pop">

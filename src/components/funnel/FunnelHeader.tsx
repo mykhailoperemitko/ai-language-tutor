@@ -23,7 +23,7 @@ export default function FunnelHeader({
     total: totalSteps,
   });
 
-  const overscrollInset = "calc(env(safe-area-inset-top, 0px) + 24px)";
+  const overscrollInset = "calc(env(safe-area-inset-top, 0px) + 16px)";
 
   return (
     <div
