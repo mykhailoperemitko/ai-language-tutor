@@ -1,8 +1,18 @@
 "use client";
 
-import { useState, useReducer } from "react";
+import { useState, useReducer, useEffect, useRef } from "react";
 import { submitFunnel as submitFunnelAction } from "@/app/actions/submitFunnel";
 import { buildSubmission } from "@/lib/funnel";
+import {
+  logFunnelStarted,
+  logStepViewed,
+  logStepCompleted,
+  logNavigatedBack,
+  logEmailSubmitted,
+  logSubmissionSucceeded,
+  logSubmissionFailed,
+  logDrop,
+} from "@/lib/analytics";
 import type { FunnelAnswers, FunnelStep, SubmitResult } from "@/lib/types";
 
 const VALIDATION_ERROR = "Please complete the full quiz and try again.";
@@ -12,9 +22,7 @@ type State = {
   completed: boolean;
 };
 
-type Action =
-  | { type: "NEXT"; stepCount: number }
-  | { type: "BACK" };
+type Action = { type: "NEXT"; stepCount: number } | { type: "BACK" };
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
@@ -30,6 +38,12 @@ function reducer(state: State, action: Action): State {
   }
 }
 
+// question steps carry the answer subtype (e.g. "single_select"); reveal steps use their own type
+function stepType(step: FunnelStep): string {
+  if (step.type === "question") return step.answer.type;
+  return step.type;
+}
+
 export function useFunnelFlow(
   getSteps: (answers: FunnelAnswers) => FunnelStep[],
 ) {
@@ -40,7 +54,49 @@ export function useFunnelFlow(
     completed: false,
   });
 
-  const goNext = () => dispatch({ type: "NEXT", stepCount: steps.length });
+  const dropStateRef = useRef({ completed: false, stepIndex: 0, steps });
+
+  useEffect(() => {
+    dropStateRef.current = {
+      completed: state.completed,
+      stepIndex: state.stepIndex,
+      steps,
+    };
+  });
+
+  useEffect(() => {
+    logFunnelStarted();
+
+    const handleUnload = () => {
+      const { completed, stepIndex: idx, steps: s } = dropStateRef.current;
+      if (completed) return;
+      const step = s[idx];
+      if (step) logDrop(idx, step.key);
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, []);
+
+  // steps is a new array reference every render, so omitting it is intentional —
+  // step content is stable within a given stepIndex
+  useEffect(() => {
+    const step = steps[state.stepIndex];
+    if (step) logStepViewed(state.stepIndex, step.key, stepType(step));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.stepIndex]);
+
+  const goNext = () => {
+    const step = steps[state.stepIndex];
+    if (step) logStepCompleted(state.stepIndex, step.key);
+    dispatch({ type: "NEXT", stepCount: steps.length });
+  };
+
+  const goBack = () => {
+    const step = steps[state.stepIndex];
+    if (step) logNavigatedBack(state.stepIndex, step.key);
+    dispatch({ type: "BACK" });
+  };
 
   const setAnswer = (key: string, value: unknown) =>
     setAnswers((prev) => ({ ...prev, [key]: value }));
@@ -51,9 +107,15 @@ export function useFunnelFlow(
       return { ok: false, error: VALIDATION_ERROR };
     }
 
+    logEmailSubmitted();
     const result = await submitFunnelAction(payload);
-    if (!result.ok) return result;
 
+    if (!result.ok) {
+      logSubmissionFailed(result.error);
+      return result;
+    }
+
+    logSubmissionSucceeded();
     setAnswer("email", email);
     goNext();
     return { ok: true };
@@ -66,7 +128,7 @@ export function useFunnelFlow(
     stepIndex: state.stepIndex,
     totalSteps: steps.length,
     goNext,
-    goBack: () => dispatch({ type: "BACK" }),
+    goBack,
     setAnswer,
     submitFunnel,
   };
