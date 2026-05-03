@@ -113,3 +113,7 @@ export type FunnelAnswers = Partial<{
   fluencyTimeline: AnswerKey;
   email: string;
 }>;
+
+export type FunnelSubmission = Required<FunnelAnswers>;
+
+export type SubmitResult = { ok: true } | { ok: false; error: string };

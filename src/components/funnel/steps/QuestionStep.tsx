@@ -5,13 +5,16 @@ import MultiSelect from "../answers/MultiSelect";
 import RangeSlider from "../answers/RangeSlider";
 import NumberPicker from "../answers/NumberPicker";
 import EmailInput from "../answers/EmailInput";
-import type { Question, FunnelAnswers } from "../utils/types";
+import type { Question, FunnelAnswers } from "@/lib/types";
 
 type Props = {
   step: Question;
   answers: FunnelAnswers;
   onAnswer: (key: string, value: unknown) => void;
   onNext: () => void;
+  onSubmitFunnel: (
+    email: string,
+  ) => Promise<{ ok: true } | { ok: false; error: string }>;
 };
 
 export default function QuestionStep({
@@ -19,6 +22,7 @@ export default function QuestionStep({
   answers,
   onAnswer,
   onNext,
+  onSubmitFunnel,
 }: Props) {
   return (
     <div>
@@ -87,7 +91,7 @@ export default function QuestionStep({
           answer={step.answer}
           value={answers[step.key as keyof typeof answers] as string | undefined}
           onAnswer={(value) => onAnswer(step.key, value)}
-          onNext={onNext}
+          onSubmit={onSubmitFunnel}
         />
       )}
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import type { RangeSlider as RangeSliderType } from "../utils/types";
+import type { RangeSlider as RangeSliderType } from "@/lib/types";
 
 type Props = {
   answer: RangeSliderType;

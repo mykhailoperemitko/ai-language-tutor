@@ -1,6 +1,6 @@
 "use client";
 
-import type { PersonalizationReveal as PersonalizationRevealType } from "../utils/types";
+import type { PersonalizationReveal as PersonalizationRevealType } from "@/lib/types";
 
 type Props = {
   step: PersonalizationRevealType;

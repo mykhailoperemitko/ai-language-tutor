@@ -1,6 +1,6 @@
 "use client";
 
-import type { MultiSelect as MultiSelectType } from "../utils/types";
+import type { MultiSelect as MultiSelectType } from "@/lib/types";
 
 type Props = {
   answer: MultiSelectType;

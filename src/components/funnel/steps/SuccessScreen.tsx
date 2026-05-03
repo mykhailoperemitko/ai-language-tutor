@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { successConfettiColors } from "../utils/theme";
+import { successConfettiColors } from "@/lib/theme";
 
 export default function SuccessScreen({ email }: { email: string }) {
   const { t } = useTranslation("funnel");

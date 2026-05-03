@@ -1,4 +1,4 @@
-import FunnelPage from "@/funnel/FunnelPage";
+import FunnelPage from "@/components/funnel/FunnelPage";
 
 export default function Home() {
   return <FunnelPage />;

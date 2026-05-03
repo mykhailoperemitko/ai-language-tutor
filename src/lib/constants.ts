@@ -45,7 +45,7 @@ export function getFunnelSteps(
 
   const fluencyTimelineLabel = answers.fluencyTimeline
     ? t(`fluencyTimeline.options.${answers.fluencyTimeline}.title`)
-    : "";
+    : t("common.defaultTimeline");
 
   const personalizationBullets = t("personalization_reveal.bullets", {
     returnObjects: true,
@@ -258,16 +258,6 @@ export function getFunnelSteps(
             emoji: "✈️",
           },
           {
-            key: "phone_video_calls",
-            title: t("topics.options.phone_video_calls.title"),
-            emoji: "📱",
-          },
-          {
-            key: "news_current_events",
-            title: t("topics.options.news_current_events.title"),
-            emoji: "📰",
-          },
-          {
             key: "academics",
             title: t("topics.options.academics.title"),
             emoji: "📚",
@@ -338,25 +328,25 @@ export function getFunnelSteps(
             key: "3_months",
             title: t("fluencyTimeline.options.3_months.title"),
             subtitle: t("fluencyTimeline.options.3_months.subtitle"),
-            emoji: "🚀",
+            emoji: "🔥",
           },
           {
             key: "6_months",
             title: t("fluencyTimeline.options.6_months.title"),
             subtitle: t("fluencyTimeline.options.6_months.subtitle"),
-            emoji: "🏃",
+            emoji: "📆",
           },
           {
             key: "1_year",
             title: t("fluencyTimeline.options.1_year.title"),
             subtitle: t("fluencyTimeline.options.1_year.subtitle"),
-            emoji: "🗓️",
+            emoji: "🌱",
           },
           {
             key: "no_rush",
             title: t("fluencyTimeline.options.no_rush.title"),
             subtitle: t("fluencyTimeline.options.no_rush.subtitle"),
-            emoji: "🌿",
+            emoji: "🧘",
           },
         ],
       },

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { numberPickerButtonColors } from "../utils/theme";
-import type { NumberPicker as NumberPickerType } from "../utils/types";
+import { numberPickerButtonColors } from "@/lib/theme";
+import type { NumberPicker as NumberPickerType } from "@/lib/types";
 
 type Props = {
   answer: NumberPickerType;

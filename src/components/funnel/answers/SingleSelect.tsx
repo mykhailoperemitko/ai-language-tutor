@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import type { SingleSelect as SingleSelectType } from "../utils/types";
+import type { SingleSelect as SingleSelectType } from "@/lib/types";
 
 type Props = {
   answer: SingleSelectType;

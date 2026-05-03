@@ -1,7 +1,7 @@
 "use client";
 
-import { tutorBadgeColors } from "../utils/theme";
-import type { TutorsReveal as TutorsRevealType } from "../utils/types";
+import { tutorBadgeColors } from "@/lib/theme";
+import type { TutorsReveal as TutorsRevealType } from "@/lib/types";
 
 type Props = {
   step: TutorsRevealType;

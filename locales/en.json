@@ -213,7 +213,7 @@
       }
     },
     "email": {
-      "heading": "Your {fluencyTimeline} plan to speak English fluently is ready.",
+      "heading": "Your {{fluencyTimeline}} plan to speak English fluently is ready.",
       "subheading": "Enter your email and we'll send it to you right now. Free.",
       "placeholder": "your@email.com",
       "ctaLabel": "Send my plan →",
@@ -236,7 +236,8 @@
       "pickAtLeast": "Pick at least {{min}}",
       "planTakingShape": "Plan taking shape",
       "defaultLevel": "your level",
-      "defaultTopics": "your chosen topics"
+      "defaultTopics": "your chosen topics",
+      "defaultTimeline": "fluency"
     }
   }
 }
