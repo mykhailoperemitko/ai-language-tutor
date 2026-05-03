@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
 import { tutorBadgeColors } from "../utils/theme";
 import type { TutorsReveal as TutorsRevealType } from "../utils/types";
 
@@ -10,15 +9,13 @@ type Props = {
 };
 
 export default function TutorsReveal({ step, onNext }: Props) {
-  const { t } = useTranslation("funnel");
-
   return (
     <div>
       <h2
         className="display"
         style={{ fontSize: 28, margin: "4px 0 8px", lineHeight: 1.05 }}
       >
-        {t("tutors_reveal.heading")}
+        {step.heading}
       </h2>
       <p
         style={{
@@ -27,7 +24,7 @@ export default function TutorsReveal({ step, onNext }: Props) {
           fontSize: 15,
         }}
       >
-        {t("tutors_reveal.body")}
+        {step.body}
       </p>
 
       <div
@@ -76,7 +73,7 @@ export default function TutorsReveal({ step, onNext }: Props) {
               </div>
               <div>
                 <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 2 }}>
-                  {t(`tutors_reveal.tutors.${tutor.key}.name`)}
+                  {tutor.name}
                 </div>
                 <div
                   style={{
@@ -86,7 +83,7 @@ export default function TutorsReveal({ step, onNext }: Props) {
                     marginBottom: 8,
                   }}
                 >
-                  {t(`tutors_reveal.tutors.${tutor.key}.description`)}
+                  {tutor.description}
                 </div>
                 <span
                   className="chip"
@@ -96,7 +93,7 @@ export default function TutorsReveal({ step, onNext }: Props) {
                     borderColor: "var(--color-ink)",
                   }}
                 >
-                  {t(`tutors_reveal.tutors.${tutor.key}.badge`)}
+                  {tutor.badge}
                 </span>
               </div>
             </div>
@@ -105,7 +102,7 @@ export default function TutorsReveal({ step, onNext }: Props) {
       </div>
 
       <button className="btn full" onClick={onNext}>
-        {t("tutors_reveal.ctaLabel", "Continue")}
+        {step.ctaLabel}
       </button>
     </div>
   );

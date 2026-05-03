@@ -1,26 +1,21 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useTranslation } from "react-i18next";
-import { getOptionCopy } from "../utils/content";
 import type { SingleSelect as SingleSelectType } from "../utils/types";
 
 type Props = {
-  questionId: string;
   answer: SingleSelectType;
   selected: string | undefined;
-  onAnswer: (key: string, value: string) => void;
+  onAnswer: (value: string) => void;
   onNext: () => void;
 };
 
 export default function SingleSelect({
-  questionId,
   answer,
   selected,
   onAnswer,
   onNext,
 }: Props) {
-  const { t } = useTranslation("funnel");
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(
@@ -32,7 +27,7 @@ export default function SingleSelect({
 
   const handleSelect = (optionKey: string) => {
     if (timerRef.current) clearTimeout(timerRef.current);
-    onAnswer(questionId, optionKey);
+    onAnswer(optionKey);
     timerRef.current = setTimeout(onNext, 240);
   };
 
@@ -40,7 +35,6 @@ export default function SingleSelect({
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
       {answer.options.map((option, i) => {
         const isSel = selected === option.key;
-        const copy = getOptionCopy(t, questionId, option.key);
         return (
           <button
             key={option.key}
@@ -49,11 +43,19 @@ export default function SingleSelect({
             onClick={() => handleSelect(option.key)}
           >
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              {option.emoji && (
+                <div
+                  aria-hidden="true"
+                  style={{ fontSize: 28, lineHeight: 1, flex: "none" }}
+                >
+                  {option.emoji}
+                </div>
+              )}
               <div style={{ flex: 1 }}>
                 <div style={{ fontWeight: 700, fontSize: 16 }}>
-                  {copy.title}
+                  {option.title}
                 </div>
-                {copy.subtitle && (
+                {option.subtitle && (
                   <div
                     style={{
                       marginTop: 3,
@@ -62,7 +64,7 @@ export default function SingleSelect({
                       lineHeight: 1.35,
                     }}
                   >
-                    {copy.subtitle}
+                    {option.subtitle}
                   </div>
                 )}
               </div>

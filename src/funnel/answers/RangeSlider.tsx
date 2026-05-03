@@ -1,39 +1,27 @@
 "use client";
 
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { resolveTag } from "../utils/content";
 import type { RangeSlider as RangeSliderType } from "../utils/types";
 
 type Props = {
-  questionId: string;
   answer: RangeSliderType;
   value: number | undefined;
-  onAnswer: (key: string, value: number) => void;
+  onAnswer: (value: number) => void;
   onNext: () => void;
 };
 
 export default function RangeSlider({
-  questionId,
   answer,
   value,
   onAnswer,
   onNext,
 }: Props) {
-  const { t } = useTranslation("funnel");
   const current = value ?? answer.defaultValue;
-  const tagLines = t(`${questionId}.tagLines`, {
-    returnObjects: true,
-  }) as string[];
-  const thresholds = answer.tagThresholds ?? [];
-  const tag = Array.isArray(tagLines)
-    ? resolveTag(tagLines, thresholds, current)
-    : "";
-  const finiteThresholds = thresholds.filter(isFinite);
+  const ticks = [answer.min, 15, 30, answer.max];
 
   useEffect(() => {
-    if (value === undefined) onAnswer(questionId, answer.defaultValue);
-  }, []);
+    if (value === undefined) onAnswer(answer.defaultValue);
+  }, [answer.defaultValue, onAnswer, value]);
 
   return (
     <div>
@@ -57,7 +45,7 @@ export default function RangeSlider({
             letterSpacing: 1.4,
           }}
         >
-          {t(`${questionId}.unitLabel`)}
+          {answer.unitLabel}
         </div>
         <div
           className="display"
@@ -66,7 +54,7 @@ export default function RangeSlider({
           {current}
           <span style={{ fontSize: 28, fontWeight: 600 }}> {answer.unit}</span>
         </div>
-        <div style={{ fontSize: 13, fontWeight: 600 }}>{tag}</div>
+        <div style={{ fontSize: 13, fontWeight: 600 }}>{answer.tag}</div>
       </div>
 
       <input
@@ -75,7 +63,7 @@ export default function RangeSlider({
         max={answer.max}
         step={answer.step}
         value={current}
-        onChange={(e) => onAnswer(questionId, Number(e.target.value))}
+        onChange={(e) => onAnswer(Number(e.target.value))}
         style={{ width: "100%", accentColor: "var(--color-coral)", height: 32 }}
       />
 
@@ -92,14 +80,14 @@ export default function RangeSlider({
         <span>
           {answer.min} {answer.unit}
         </span>
-        {finiteThresholds.slice(1, -1).map((tick) => (
+        {ticks.slice(1, -1).map((tick) => (
           <span key={tick}>{tick}</span>
         ))}
         <span>{answer.max}+</span>
       </div>
 
       <button className="btn full" onClick={onNext}>
-        {t(`${questionId}.ctaLabel`)}
+        {answer.ctaLabel}
       </button>
     </div>
   );

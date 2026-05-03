@@ -1,24 +1,23 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import type { EmailInput as EmailInputType } from "../utils/types";
 
 type Props = {
-  questionId: string;
+  answer: EmailInputType;
   value: string | undefined;
-  onAnswer: (key: string, value: string) => void;
+  onAnswer: (value: string) => void;
   onNext: () => void;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function EmailInput({
-  questionId,
+  answer,
   value,
   onAnswer,
   onNext,
 }: Props) {
-  const { t } = useTranslation("funnel");
   const [submitting, setSubmitting] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const email = value ?? "";
@@ -49,7 +48,7 @@ export default function EmailInput({
           display: "block",
         }}
       >
-        {t(`${questionId}.label`)}
+        {answer.label}
       </label>
       <div
         style={{
@@ -67,9 +66,9 @@ export default function EmailInput({
         <input
           type="email"
           autoComplete="email"
-          placeholder={t(`${questionId}.placeholder`)}
+          placeholder={answer.placeholder}
           value={email}
-          onChange={(e) => onAnswer(questionId, e.target.value)}
+          onChange={(e) => onAnswer(e.target.value)}
           style={{
             flex: 1,
             border: "none",
@@ -98,16 +97,14 @@ export default function EmailInput({
           marginBottom: 18,
         }}
       >
-        🔒 {t(`${questionId}.legalNote`)}
+        🔒 {answer.legalNote}
       </div>
       <button
         className="btn full"
         type="submit"
         disabled={!valid || submitting}
       >
-        {submitting
-          ? t(`${questionId}.submittingLabel`)
-          : t(`${questionId}.ctaLabel`)}
+        {submitting ? answer.submittingLabel : answer.ctaLabel}
       </button>
     </form>
   );

@@ -1,41 +1,32 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-import { getOptionCopy } from "../utils/content";
 import type { MultiSelect as MultiSelectType } from "../utils/types";
 
 type Props = {
-  questionId: string;
   answer: MultiSelectType;
   selected: string[] | undefined;
-  onAnswer: (key: string, value: string[]) => void;
+  onAnswer: (value: string[]) => void;
   onNext: () => void;
 };
 
 export default function MultiSelect({
-  questionId,
   answer,
   selected,
   onAnswer,
   onNext,
 }: Props) {
-  const { t } = useTranslation("funnel");
   const value = selected ?? [];
-  const min = answer.minSelect ?? 1;
   const max = answer.options.length;
 
   const toggle = (optionKey: string) => {
     if (value.includes(optionKey)) {
-      onAnswer(
-        questionId,
-        value.filter((v) => v !== optionKey),
-      );
+      onAnswer(value.filter((v) => v !== optionKey));
     } else if (value.length < max) {
-      onAnswer(questionId, [...value, optionKey]);
+      onAnswer([...value, optionKey]);
     }
   };
 
-  const canContinue = value.length >= min;
+  const canContinue = value.length >= answer.minSelect;
 
   return (
     <div>
@@ -44,12 +35,14 @@ export default function MultiSelect({
       >
         {answer.options.map((option) => {
           const isSel = value.includes(option.key);
-          const copy = getOptionCopy(t, questionId, option.key);
           return (
             <button
               key={option.key}
               onClick={() => toggle(option.key)}
               style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
                 background: isSel ? "var(--color-coral)" : "var(--color-paper)",
                 color: isSel
                   ? "var(--color-text-on-accent)"
@@ -68,7 +61,12 @@ export default function MultiSelect({
                 transform: isSel ? "translateY(-1px)" : "none",
               }}
             >
-              {copy.title}
+              {option.emoji && (
+                <span aria-hidden="true" style={{ fontSize: 16, lineHeight: 1 }}>
+                  {option.emoji}
+                </span>
+              )}
+              {option.title}
             </button>
           );
         })}
@@ -80,10 +78,10 @@ export default function MultiSelect({
           marginBottom: 12,
         }}
       >
-        {t("common.countSelected", { count: value.length })}
+        {answer.countSelectedLabel}
       </div>
       <button className="btn full" disabled={!canContinue} onClick={onNext}>
-        {canContinue ? t("common.continue") : t("common.pickAtLeast", { min })}
+        {canContinue ? answer.continueLabel : answer.pickAtLeastLabel}
       </button>
     </div>
   );

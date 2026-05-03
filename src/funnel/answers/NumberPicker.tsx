@@ -1,16 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
-import { resolveTag } from "../utils/content";
 import { numberPickerButtonColors } from "../utils/theme";
 import type { NumberPicker as NumberPickerType } from "../utils/types";
 
 type Props = {
-  questionId: string;
   answer: NumberPickerType;
   value: number | undefined;
-  onAnswer: (key: string, value: number) => void;
+  onAnswer: (value: number) => void;
   onNext: () => void;
 };
 
@@ -29,30 +26,22 @@ function getButtonBg(
 }
 
 export default function NumberPicker({
-  questionId,
   answer,
   value,
   onAnswer,
   onNext,
 }: Props) {
-  const { t } = useTranslation("funnel");
   const current = value ?? Math.ceil((answer.min + answer.max) / 2);
   const numbers = Array.from(
     { length: answer.max - answer.min + 1 },
     (_, i) => answer.min + i,
   );
-  const thresholds = answer.tagThresholds ?? [];
-  const tagLines = t(`${questionId}.tagLines`, {
-    returnObjects: true,
-  }) as string[];
-  const tag = Array.isArray(tagLines)
-    ? resolveTag(tagLines, thresholds, current)
-    : "";
-  const topColorThreshold = thresholds[1] ?? Math.ceil(answer.max * 0.6);
+  const thresholds = [3, 6, 8, Infinity];
+  const topColorThreshold = thresholds[1];
 
   useEffect(() => {
-    if (value === undefined) onAnswer(questionId, current);
-  }, []);
+    if (value === undefined) onAnswer(current);
+  }, [current, onAnswer, value]);
 
   return (
     <div>
@@ -73,7 +62,9 @@ export default function NumberPicker({
             /{answer.max}
           </span>
         </div>
-        <div style={{ fontSize: 13, fontWeight: 600, marginTop: 4 }}>{tag}</div>
+        <div style={{ fontSize: 13, fontWeight: 600, marginTop: 4 }}>
+          {answer.tag}
+        </div>
       </div>
 
       <div
@@ -90,7 +81,7 @@ export default function NumberPicker({
           return (
             <button
               key={n}
-              onClick={() => onAnswer(questionId, n)}
+              onClick={() => onAnswer(n)}
               style={{
                 aspectRatio: "1 / 1.1",
                 background: getButtonBg(n, current, thresholds),
@@ -127,12 +118,12 @@ export default function NumberPicker({
           padding: "0 2px",
         }}
       >
-        <span>{t(`${questionId}.labelMin`)}</span>
-        <span>{t(`${questionId}.labelMax`)}</span>
+        <span>{answer.labelMin}</span>
+        <span>{answer.labelMax}</span>
       </div>
 
       <button className="btn full" onClick={onNext}>
-        {t(`${questionId}.continueLabel`)}
+        {answer.continueLabel}
       </button>
     </div>
   );

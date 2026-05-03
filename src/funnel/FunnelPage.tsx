@@ -1,13 +1,14 @@
 "use client";
 
 import "@/utils/i18n";
-import { useReducer } from "react";
+import { useMemo, useReducer } from "react";
+import { useTranslation } from "react-i18next";
 import FunnelHeader from "./FunnelHeader";
 import QuestionStep from "./steps/QuestionStep";
 import TutorsReveal from "./steps/TutorsReveal";
 import PersonalizationReveal from "./steps/PersonalizationReveal";
 import SuccessScreen from "./steps/SuccessScreen";
-import { FUNNEL_STEPS } from "./utils/constants";
+import { FUNNEL_STEP_COUNT, getFunnelSteps } from "./utils/constants";
 import type { FunnelAnswers } from "./utils/types";
 
 type State = {
@@ -24,7 +25,7 @@ type Action =
 function reducer(state: State, action: Action): State {
   switch (action.type) {
     case "NEXT":
-      if (state.stepIndex >= FUNNEL_STEPS.length - 1)
+      if (state.stepIndex >= FUNNEL_STEP_COUNT - 1)
         return { ...state, completed: true };
       return { ...state, stepIndex: state.stepIndex + 1 };
     case "BACK":
@@ -40,11 +41,16 @@ function reducer(state: State, action: Action): State {
 }
 
 export default function FunnelPage() {
+  const { t } = useTranslation("funnel");
   const [state, dispatch] = useReducer(reducer, {
     stepIndex: 0,
     answers: {},
     completed: false,
   });
+  const steps = useMemo(
+    () => getFunnelSteps(t, state.answers),
+    [state.answers, t],
+  );
 
   const goNext = () => dispatch({ type: "NEXT" });
   const goBack = () => dispatch({ type: "BACK" });
@@ -55,7 +61,7 @@ export default function FunnelPage() {
     return <SuccessScreen email={state.answers.email ?? ""} />;
   }
 
-  const currentStep = FUNNEL_STEPS[state.stepIndex];
+  const currentStep = steps[state.stepIndex];
 
   return (
     <div
@@ -68,7 +74,7 @@ export default function FunnelPage() {
     >
       <FunnelHeader
         stepIndex={state.stepIndex}
-        totalSteps={FUNNEL_STEPS.length}
+        totalSteps={steps.length}
         onBack={goBack}
       />
       <main
@@ -89,7 +95,7 @@ export default function FunnelPage() {
               <TutorsReveal step={currentStep} onNext={goNext} />
             )}
             {currentStep.type === "personalization_reveal" && (
-              <PersonalizationReveal answers={state.answers} onNext={goNext} />
+              <PersonalizationReveal step={currentStep} onNext={goNext} />
             )}
           </div>
         </div>

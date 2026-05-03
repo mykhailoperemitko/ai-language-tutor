@@ -1,42 +1,13 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-import { getOptionCopy } from "../utils/content";
-import type { FunnelAnswers } from "../utils/types";
+import type { PersonalizationReveal as PersonalizationRevealType } from "../utils/types";
 
 type Props = {
-  answers: FunnelAnswers;
+  step: PersonalizationRevealType;
   onNext: () => void;
 };
 
-export default function PersonalizationReveal({ answers, onNext }: Props) {
-  const { t } = useTranslation("funnel");
-
-  const levelLabel = answers.level
-    ? getOptionCopy(t, "level", answers.level).title
-    : t("common.defaultLevel");
-  const topicsLabel =
-    answers.topics && answers.topics.length > 0
-      ? answers.topics
-          .slice(0, 3)
-          .map((k) => getOptionCopy(t, "topics", k).title)
-          .join(", ")
-      : t("common.defaultTopics");
-  const dailyMinutes = answers.dailyMinutes ?? 15;
-
-  const body = t("personalization_reveal.bodyTemplate", {
-    level: levelLabel,
-    topics: topicsLabel,
-    dailyMinutes,
-  });
-
-  const bulletsRaw = t("personalization_reveal.bullets", {
-    returnObjects: true,
-  });
-  const bullets: string[] = Array.isArray(bulletsRaw)
-    ? (bulletsRaw as string[])
-    : [];
-
+export default function PersonalizationReveal({ step, onNext }: Props) {
   return (
     <div>
       <div style={{ marginBottom: 16 }}>
@@ -63,7 +34,7 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
               strokeLinejoin="round"
             />
           </svg>
-          {t("common.planTakingShape")}
+          {step.chipLabel}
         </span>
       </div>
 
@@ -71,7 +42,7 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
         className="display"
         style={{ fontSize: 28, margin: "4px 0 8px", lineHeight: 1.05 }}
       >
-        {t("personalization_reveal.heading")}
+        {step.heading}
       </h2>
 
       <p
@@ -82,7 +53,7 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
           lineHeight: 1.5,
         }}
       >
-        {body}
+        {step.body}
       </p>
 
       <div
@@ -105,13 +76,10 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
             marginBottom: 12,
           }}
         >
-          {t(
-            "personalization_reveal.bulletsHeading",
-            "Your plan gets smarter every day",
-          )}
+          {step.bulletsHeading}
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          {bullets.map((bullet, i) => (
+          {step.bullets.map((bullet, i) => (
             <div
               key={i}
               style={{ display: "flex", alignItems: "center", gap: 10 }}
@@ -152,7 +120,7 @@ export default function PersonalizationReveal({ answers, onNext }: Props) {
       </div>
 
       <button className="btn full" onClick={onNext}>
-        {t("personalization_reveal.ctaLabel", "Continue")}
+        {step.ctaLabel}
       </button>
     </div>
   );
