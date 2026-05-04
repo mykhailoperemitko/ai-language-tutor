@@ -63,6 +63,11 @@ body {
   line-height: 1.08;
 }
 
+.funnel-root {
+  height: 100vh;
+  height: 100svh;
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

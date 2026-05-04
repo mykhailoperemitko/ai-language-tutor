@@ -29,7 +29,6 @@ export default function FunnelHeader({
     <div
       style={{
         padding: `${overscrollInset} 20px 10px`,
-        marginTop: `calc(-1 * ${overscrollInset})`,
         display: "flex",
         flexDirection: "column",
         gap: 8,

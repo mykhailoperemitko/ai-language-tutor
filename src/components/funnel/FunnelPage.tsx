@@ -32,8 +32,8 @@ export default function FunnelPage() {
 
   return (
     <div
+      className="funnel-root"
       style={{
-        minHeight: "100vh",
         background: "var(--color-cream)",
         display: "flex",
         flexDirection: "column",
