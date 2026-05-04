@@ -61,28 +61,28 @@
       }
     },
     "tutors_reveal": {
-      "heading": "50+ tutors. One for every level and every goal.",
-      "body": "Some tutors are great for beginners — they speak slowly, use simple words, and never make you feel bad for mistakes. Others push advanced learners to sound sharp and natural fast. You always pick who you talk to.",
+      "heading": "Meet your tutors",
+      "body": "We'll match you with the right one based on your answers.",
       "ctaLabel": "Continue",
       "tutors": {
         "breezy": {
           "name": "Breezy",
-          "description": "Your chill coffee-shop buddy. Speaks slowly, keeps it simple, and celebrates every small win. Perfect if English still feels scary.",
+          "description": "Speaks slowly, keeps it simple, and celebrates every win. Perfect if English still feels scary.",
           "badge": "Beginner-friendly"
         },
         "knox": {
           "name": "Knox",
-          "description": "Ex-Wall Street, zero tolerance for vague. Drills you on presentations, emails, and meetings until you sound like you belong in the room.",
+          "description": "Drills you on presentations, emails, and meetings until you sound like you belong in the room.",
           "badge": "Intermediate+"
         },
         "wren": {
           "name": "Wren",
-          "description": "Part travel guide, part slang encyclopedia. Teaches you the English people actually speak — not the textbook version.",
+          "description": "Teaches real-world English — not the textbook version.",
           "badge": "All levels"
         },
         "vesper": {
           "name": "Vesper",
-          "description": "Razor-sharp interview coach. Finds the gaps in your English that hold you back at work and fixes them, fast.",
+          "description": "Finds the gaps in your English that hold you back at work and fixes them fast.",
           "badge": "Advanced"
         }
       }
