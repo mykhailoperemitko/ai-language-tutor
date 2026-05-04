@@ -133,9 +133,10 @@ export default function TutorsReveal({ step, onNext }: Props) {
         style={{
           position: "sticky",
           bottom: 0,
-          paddingTop: 8,
+          paddingTop: 20,
+          paddingBottom: "env(safe-area-inset-bottom, 0px)",
           background:
-            "linear-gradient(to bottom, rgb(251 246 236 / 0), var(--color-cream) 26px)",
+            "linear-gradient(to bottom, rgb(251 246 236 / 0), var(--color-cream) 20px)",
         }}
       >
         <button className="btn full" onClick={onNext}>
