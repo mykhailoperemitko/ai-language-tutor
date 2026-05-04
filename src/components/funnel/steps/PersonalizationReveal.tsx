@@ -24,13 +24,12 @@ export default function PersonalizationReveal({ step, onNext }: Props) {
         {step.heading}
       </h2>
 
-      {/* Answer highlights — 3 cards showing user's actual answers */}
-      <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
-        {step.highlights.map((h) => (
+      {/* Answer highlights — topics full-width on top, level + minutes below */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+        {/* Topics card — full width */}
+        {step.highlights[1] && (
           <div
-            key={h.label}
             style={{
-              flex: 1,
               background: "var(--color-paper)",
               border: "2px solid var(--color-ink)",
               borderRadius: 16,
@@ -39,10 +38,9 @@ export default function PersonalizationReveal({ step, onNext }: Props) {
               display: "flex",
               flexDirection: "column",
               gap: 3,
-              minWidth: 0,
             }}
           >
-            <span style={{ fontSize: 18, lineHeight: 1 }}>{h.emoji}</span>
+            <span style={{ fontSize: 18, lineHeight: 1 }}>{step.highlights[1].emoji}</span>
             <span
               style={{
                 fontSize: 10,
@@ -52,7 +50,7 @@ export default function PersonalizationReveal({ step, onNext }: Props) {
                 color: "var(--color-ink-soft)",
               }}
             >
-              {h.label}
+              {step.highlights[1].label}
             </span>
             <span
               style={{
@@ -60,16 +58,55 @@ export default function PersonalizationReveal({ step, onNext }: Props) {
                 fontWeight: 700,
                 color: "var(--color-ink)",
                 lineHeight: 1.2,
-                overflow: "hidden",
-                display: "-webkit-box",
-                WebkitLineClamp: 2,
-                WebkitBoxOrient: "vertical",
               }}
             >
-              {h.value}
+              {step.highlights[1].value}
             </span>
           </div>
-        ))}
+        )}
+        {/* Level + daily-minutes cards — side by side */}
+        <div style={{ display: "flex", gap: 8 }}>
+          {[step.highlights[0], step.highlights[2]].map((h) => h && (
+            <div
+              key={h.label}
+              style={{
+                flex: 1,
+                background: "var(--color-paper)",
+                border: "2px solid var(--color-ink)",
+                borderRadius: 16,
+                boxShadow: "0 3px 0 var(--color-ink)",
+                padding: "10px 12px",
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
+                minWidth: 0,
+              }}
+            >
+              <span style={{ fontSize: 18, lineHeight: 1 }}>{h.emoji}</span>
+              <span
+                style={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--color-ink-soft)",
+                }}
+              >
+                {h.label}
+              </span>
+              <span
+                style={{
+                  fontSize: 13,
+                  fontWeight: 700,
+                  color: "var(--color-ink)",
+                  lineHeight: 1.2,
+                }}
+              >
+                {h.value}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Timeline layout */}
