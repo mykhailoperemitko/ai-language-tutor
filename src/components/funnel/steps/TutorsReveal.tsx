@@ -129,9 +129,11 @@ export default function TutorsReveal({ step, onNext }: Props) {
         })}
       </div>
 
-      <button className="btn full" onClick={onNext}>
-        {step.ctaLabel}
-      </button>
+      <div style={{ position: "sticky", bottom: 0, paddingTop: 8 }}>
+        <button className="btn full" onClick={onNext}>
+          {step.ctaLabel}
+        </button>
+      </div>
     </div>
   );
 }
