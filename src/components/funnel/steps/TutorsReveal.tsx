@@ -32,7 +32,7 @@ export default function TutorsReveal({ step, onNext }: Props) {
       <div
         className="tutor-grid"
         style={{
-          marginBottom: 18,
+          marginBottom: 20,
         }}
       >
         {step.tutors.map((tutor, i) => {
@@ -129,20 +129,9 @@ export default function TutorsReveal({ step, onNext }: Props) {
         })}
       </div>
 
-      <div
-        style={{
-          position: "sticky",
-          bottom: 0,
-          paddingTop: 20,
-          paddingBottom: "env(safe-area-inset-bottom, 0px)",
-          background:
-            "linear-gradient(to bottom, rgb(251 246 236 / 0), var(--color-cream) 20px)",
-        }}
-      >
-        <button className="btn full" onClick={onNext}>
-          {step.ctaLabel}
-        </button>
-      </div>
+      <button className="btn full" onClick={onNext}>
+        {step.ctaLabel}
+      </button>
     </div>
   );
 }
